@@ -1,8 +1,7 @@
  > As you complete each section you **must** remove the prompt text. Every *turnin* of this project includes points for formatting of this README so keep it clean and keep it up to date. 
  > Prompt text is any lines beginning with "\>"
  > Replace anything between \<...\> with your project specifics and remove angle brackets. For example, you need to name your project and replace the header right below this line with that title (no angle brackets). 
-# \<Project title\>
- > Your author list below should include links to all members GitHub (remove existing author). Note from Arthur: Hi I was randomly assigned into your group, please let me know if you two have a chat on Slack or Discord that I can be added into to further discuss ideas for the project. Additionally, right below this where our names are, please edit the urls for your profiles to be the correct url. Unfortunately I cannot see your names until there's a commit so go ahead and adjust accordingly.
+# \<Project Chess\>
  
  > Authors: \<[Merrick Slane](https://github.com/mslan002)\>, \<[Arthur Hecker](https://github.com/aheck004)\>, \<[Tomin Kappiarumalayil](https://github.com/tkapp001)\>, \<[Daniel Boules](https://github.com/dcboules)\>
  
