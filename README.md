@@ -1,33 +1,21 @@
- > As you complete each section you **must** remove the prompt text. Every *turnin* of this project includes points for formatting of this README so keep it clean and keep it up to date. 
- > Prompt text is any lines beginning with "\>"
- > Replace anything between \<...\> with your project specifics and remove angle brackets. For example, you need to name your project and replace the header right below this line with that title (no angle brackets). 
-# \<Project Chess\>
  
- > Authors: \<[Merrick Slane](https://github.com/mslan002)\>, \<[Arthur Hecker](https://github.com/aheck004)\>, \<[Tomin Kappiarumalayil](https://github.com/tkapp001)\>, \<[Daniel Boules](https://github.com/dcboules)\>
- 
- > You will be forming a group of **THREE** students and working on an interesting project. A list of proposed project ideas that have been successful in previous quarters is given in the project specifications link on iLearn. You can select an idea from the list, start thinking about the features you will implement, what design patterns can help you implement them, and why. If you want to propose your own original idea, you will have to contact an instructor to discuss the project and obtain written permission before you submit your project proposal. Your project needs to implement two design patterns.The project work should be divided almost equally among team members and each member is expected to work on at least one design pattern (more than one partner may work on a pattern) and some of its test cases. You can of course help each other, but it needs to be clear who will be responsible for which patterns and for which features.
- 
- > ## Expectations
- > * Incorporate **at least two** distinct design patterns. You need to include at least *one* design pattern that we will teach this session:
- >   * Composite, Strategy, Abstract Factory, Visitor, or Decorator
- > * All design patterns need to be linked together (it can't be two distinct projects)
- > * Your project should be implemented in C++. If you wish to choose anoher programming language (e.g. Java, Python), please discuss with your lab TA to obtain permission.
- > * You can incorporate additional technologies/tools but they must be approved (in writing) by the instructor or the TA.
- > * Each member of the group **must** be committing code regularly and make sure their code is correctly attributed to them. We will be checking attributions to determine if there was equal contribution to the project.
-> * All project phases are to be submitted to this GitHub repository. You should modify this README file to reflect the different phases of the project. In addition, you should regularly hold sprint meetings with your group.
 
+
+# \Project Chess\
+ 
+ > Authors: \<[Merrick Slane](https://github.com/meslane)\>, \<[Arthur Hecker](https://github.com/aheck004)\>, \<[Tomin Kappiarumalayil](https://github.com/tominkapp)\>, \<[Daniel Boules](https://github.com/dcboules)>\
+ 
 ## Project Description
- > Your project description should summarize the project you are proposing. Be sure to include
- > * Why is it important or interesting to you?
- > * What languages/tools/technologies do you plan to use? (This list may change over the course of the project)
- >   * [toolname](link) - Short description
- > * What will be the input/output of your project?
- > * What are the two design patterns you will be using? For each design pattern you must explain in 4-5 sentences:
- >   * Why you picked this pattern and what feature you will implement with it
- >   * What problem you anticipate encountering when implementing your project that you will solve using the design pattern
- >   * Why the chosen design pattern will lead to a good solution to that problem
- > * This description should be in enough detail that the TA/instructor can determine the complexity of the project and if it is sufficient for the team members to complete in the time allotted. 
+- Our project is to recreate the traditional chess board and be able to play against an engine. This is very interesting to us because we find game theory and the mathematics behind it very interesting. It is also exciting to be able to work with a GUI using C++. On top of this, chess has been around for quite a while so putting it in technology is also exciting.
+- Language: C++  We will be using SDL for the graphics.
+     [stockfish](https://stockfishchess.org/) - Current best chess engine.
+     [SDL](https://www.libsdl.org/)
+- The input of the final product will be mouse strokes (click on peice and click on location), the output will be a motion and a returning move from the computer.
+The two design patterns we decided on are first:
+     * For the board we will use the singleton design pattern. A problem implementing could be linking all of the specific pieces to the board. The singleton will be a good solution to the board because there will never be more than one chess board in a game and it will be globally important to the operation of the game. It ensures that the board will be easily accessible to all the pieces.
+     * The second design pattern we will use the composite pattern. We picked it because it is a great way to have a class for each piece that all have common functions for example checking the king, or having the concept of moving. Problems that we can anticipate could be how to deal with piece collision or forcing pieces to not move while the king is in check. One way to solve this using the composite pattern is to reference the logic for these rules in a single function that can be defined and referenced in each child.  
 
+     
  > ## Phase II
  > In addition to completing the "Class Diagram" section below, you will need to 
  > * Set up your GitHub project board as a Kanban board for the project. It should have columns that map roughly to 
