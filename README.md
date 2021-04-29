@@ -3,7 +3,11 @@
 
 # Project Chess
  
- Authors: \[Merrick Slane](https://github.com/meslane)\, \[Arthur Hecker](https://github.com/aheck004)\, \[Tomin Kappiarumalayil](https://github.com/tominkapp)\, \[Daniel Boules](https://github.com/dcboules)\
+ Authors: 
+\[Merrick Slane](https://github.com/meslane)\, 
+\[Arthur Hecker](https://github.com/aheck004)\, 
+\[Tomin Kappiarumalayil](https://github.com/tominkapp)\, 
+\[Daniel Boules](https://github.com/dcboules)\
  
 ## Project Description
 - Our project is to recreate the traditional chess board and be able to play against an engine. This is very interesting to us because we find game theory and the mathematics behind it very interesting. It is also exciting to be able to work with a GUI using C++. On top of this, chess has been around for quite a while so putting it in technology is also exciting.
