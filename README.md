@@ -41,6 +41,7 @@ The two design patterns we decided on are first:
   ![Singleton design battern for board and relationships to player and piece](./images/OMT2.png)
   
    **Strategy design pattern for the print class (Not finalized)**
+   
    ![Singleton design battern for the print class](./images/printOMT.png)
  
 >>>>>>> 388cb6bcf8b4dd452ea6408e1452a7d1eb4b0166
