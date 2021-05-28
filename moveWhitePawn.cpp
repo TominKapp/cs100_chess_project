@@ -1,6 +1,6 @@
 #include "moveWhitePawn.hpp"
 
-bool MoveWhitePawn::testMove(long long position, long long newMove) const {
+bool MoveWhitePawn::testMove(long long position, long long newMove, long long playerState, long long boardState) const {
     for (int i = 1; i < 8; i++) {
         if (newMove == position >> 8) {
             return true;

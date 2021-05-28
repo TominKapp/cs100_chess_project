@@ -2,7 +2,8 @@
 #define __MOVE_HPP__
 
 class Move {
-    virtual bool testMove(long long position, long long newMove) const = 0;
+    public:
+        virtual bool testMove(long long position, long long newMove, long long playerState, long long boardState) const = 0;
 };
 
 #endif
