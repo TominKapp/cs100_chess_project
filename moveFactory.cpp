@@ -12,10 +12,10 @@ Move* MoveFactory::createMoveStrategy(int type, int team) { //0 = pawn, 1 = rook
     switch(type) {
         case 0:
             if (team == 0) { //black
-                return new MoveBlackPawn();
+                return new MoveBlackPawn(); //done
             }
             else if (team == 1) { //white
-                return new MoveWhitePawn();
+                return new MoveWhitePawn(); //done
             }
             else {
                 return nullptr;
@@ -27,7 +27,7 @@ Move* MoveFactory::createMoveStrategy(int type, int team) { //0 = pawn, 1 = rook
             break;
             
         case 2:
-            return new MoveKnight();
+            return new MoveKnight(); //done
             break;
             
         case 3:
@@ -39,7 +39,7 @@ Move* MoveFactory::createMoveStrategy(int type, int team) { //0 = pawn, 1 = rook
             break;
             
         case 5:
-            return new MoveKing();
+            return new MoveKing(); //done
             break;
         
         default:
