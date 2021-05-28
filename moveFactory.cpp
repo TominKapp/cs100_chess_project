@@ -3,6 +3,10 @@
 #include "moveBlackPawn.hpp"
 #include "moveWhitePawn.hpp"
 #include "moveRook.hpp"
+#include "moveKnight.hpp"
+#include "moveBishop.hpp"
+#include "moveQueen.hpp"
+#include "moveKing.hpp"
 
 Move* MoveFactory::createMoveStrategy(int type, int team) { //0 = pawn, 1 = rook, 2 = knight, 3 = bishop, 4 = queen, 5 = king 
     switch(type) {
@@ -10,8 +14,11 @@ Move* MoveFactory::createMoveStrategy(int type, int team) { //0 = pawn, 1 = rook
             if (team == 0) { //black
                 return new MoveBlackPawn();
             }
-            else { //assume white otherwise
+            else if (team == 1) { //white
                 return new MoveWhitePawn();
+            }
+            else {
+                return nullptr;
             }
             break;
             
@@ -20,7 +27,7 @@ Move* MoveFactory::createMoveStrategy(int type, int team) { //0 = pawn, 1 = rook
             break;
             
         case 2:
-            //TODO: make MoveKnight
+            return new MoveKnight();
             break;
             
         case 3:
@@ -28,11 +35,11 @@ Move* MoveFactory::createMoveStrategy(int type, int team) { //0 = pawn, 1 = rook
             break;
             
         case 4:
-            //TODO: make MoveQueen
+            return new MoveQueen();
             break;
             
         case 5:
-            //TODO: make MoveKing
+            return new MoveKing();
             break;
         
         default:

@@ -3,9 +3,9 @@
 
 #include "move.hpp"
 
-class MoveBishop: public move {
+class MoveBishop: public Move {
     public:
-        bool testMove(long long position, long long newMove, long long playerState, long long boardState);
+        bool testMove(long long position, long long newMove, long long playerState, long long boardState) const;
 };
 
 #endif

@@ -1,4 +1,4 @@
-#include "moveBishop.h"
+#include "moveBishop.hpp"
 
 bool MoveBishop::testMove(long long position, long long newMove, long long playerState, long long boardState) const {
     for (int i = 1; i < 8; i++) {

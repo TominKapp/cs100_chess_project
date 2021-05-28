@@ -1,6 +1,8 @@
 #ifndef __PIECE_HPP__
 #define __PIECE_HPP__
 
+#include "move.hpp"
+
 class Piece {
     private:
         Move* moveStrategy; 
@@ -9,7 +11,7 @@ class Piece {
         long long position; //position states are stored as a 64 bit number with one bit for each square
 	
     public:
-    	Piece(type, position);
+    	Piece(int type, int team, int startPos);
         ~Piece();
         bool makeMove(long long newPosition);
         bool testMove(long long newPosition);
