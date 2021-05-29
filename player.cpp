@@ -28,6 +28,7 @@ bool Player::makeMove(long long piecePosition, long long newPosition, long long 
     for (int i = 0; i < 16; i++) { //find if there is a piece at x position
         if (pieces[i]->getPosition() == piecePosition) {
             return pieces[i]->makeMove(newPosition, this->boardstate, wholeBoardState);
+            this->updateBoardState();
         }
     }
     return false;
