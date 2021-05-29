@@ -6,10 +6,10 @@ bool MoveQueen::testMove(long long position, long long newMove, long long player
     
     for (int i = 1; i < 8; i++) { 
         for (int j = 0; j < 4; i++) {
-            if (newMove == position << (magicNumbers[j] * i)) {
+            if (newMove == position << (magicNumbers[j] * i) && raycast(position, newMove, magicNumbers[j], boardState)) {
                 return true;
             }
-            else if (newMove == position >> (magicNumbers[j] * i)) {
+            else if (newMove == position >> (magicNumbers[j] * i) && raycast(position, newMove, magicNumbers[j], boardState)) {
                 return true;
             }
         }

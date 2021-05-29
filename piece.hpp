@@ -3,6 +3,8 @@
 
 #include "move.hpp"
 
+class Board;
+
 class Piece {
     private:
         Move* moveStrategy; 
@@ -13,10 +15,10 @@ class Piece {
     public:
     	Piece(int type, int team, int startPos);
         ~Piece();
-        bool makeMove(long long newPosition);
-        bool testMove(long long newPosition);
-        long long getAllValidMoves();
-        bool testCheck(); //test if piece is in check
+        bool testMove(long long newPosition, long long playerState, long long boardState) const;
+        bool makeMove(long long newPosition, long long playerState, long long boardState);
+        long long getAllValidMoves(long long playerState, long long boardState) const;
+        bool testCheck() const; //test if piece is in check
 };
 
 #endif
