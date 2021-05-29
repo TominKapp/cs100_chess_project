@@ -6,7 +6,7 @@ Board::Board(Player* w, Player* b) {
 }
 
 void Board::updateBoardState() {
-    this->boardstate = white->getBoardState() & black->getBoardState();
+    this->boardstate = white->getBoardState() | black->getBoardState();
 }
 
 long long Board::getBoardState() {

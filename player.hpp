@@ -13,8 +13,10 @@ class Player {
         Player(int team);
         ~Player();
         
+        void updateBoardState();
         long long getBoardState() const;
-    
+        bool makeMove(long long piecePosition, long long newPosition, long long boardState);
+        void testCaptures(Player* enemy);
 };
 
 #endif
