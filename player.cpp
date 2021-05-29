@@ -41,3 +41,12 @@ void Player::testCaptures(Player* enemy) { //set a piece to captured if it coinc
         }
     }
 }
+
+long long Player::getAllValidMoves(long long wholeBoardState) {
+  long long allmoves = 0;
+  for (int i = 0; i< 16; i++) {
+    allmoves |= pieces[i]->getAllValidMoves(this->boardstate, wholeBoardState);
+  }
+  
+  return allmoves;
+}

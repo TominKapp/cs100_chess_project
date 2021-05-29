@@ -17,6 +17,7 @@ class Player {
         long long getBoardState() const;
         bool makeMove(long long piecePosition, long long newPosition, long long boardState);
         void testCaptures(Player* enemy);
+        long long getAllValidMoves(long long wholeBoardState);
 };
 
 #endif
