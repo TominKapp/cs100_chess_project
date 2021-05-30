@@ -24,9 +24,9 @@ void printFormatted(const uint64_t &l) {
 }
 
 int main () {
-    Piece* p = new Piece(0, 1, pow(2,25));
+    Piece* p = new Piece(4, 1, pow(2,27));
 
-    printFormatted(p->getPosition());
+    //printFormatted(p->getPosition());
     
     printFormatted(p->getAllValidMoves(p->getPosition(), p->getPosition()));
     
