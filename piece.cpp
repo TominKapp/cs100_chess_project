@@ -1,7 +1,10 @@
 #include "piece.hpp"
 #include "moveFactory.hpp"
 
-Piece::Piece(int type, int team, int startPos) {
+#include <cstdint>
+#include <iostream>
+
+Piece::Piece(int type, int team, uint64_t startPos) {
     this->type = type;
     this->team = team;
     this->position = startPos;
@@ -16,32 +19,33 @@ Piece::~Piece() {
     delete moveStrategy;
 }
 
-bool Piece::testMove(long long newPosition, long long playerState, long long boardState) const {
+bool Piece::testMove(uint64_t newPosition, uint64_t playerState, uint64_t boardState) const {
     if (moveStrategy->testMove(position, newPosition, playerState, boardState)) {
         return true;
     }
     return false;
 }
 
-bool Piece::makeMove(long long newPosition, long long playerState, long long boardState) {
+bool Piece::makeMove(uint64_t newPosition, uint64_t playerState, uint64_t boardState) {
     if (testMove(newPosition, playerState, boardState)) {
         this->position = newPosition;
     }
 }
 
-long long Piece::getAllValidMoves(long long playerState, long long boardState) const {
-    long long allMoves = 0;
+uint64_t Piece::getAllValidMoves(uint64_t playerState, uint64_t boardState) const {
+    uint64_t allMoves = 0;
+    const uint64_t literalOne = 1;
     
-    for (int i = 0; i < 64; i++) {
-        if (testMove(1 << i, playerState, boardState)) {
-            allMoves |= (1 << i);
+    for (uint64_t i = 0; i < 64; i++) {
+        if (testMove((literalOne << i), playerState, boardState)) {
+            allMoves |= (literalOne << i);
         }
     }
     
     return allMoves;
 }
 
-long long Piece::getPosition() {
+uint64_t Piece::getPosition() {
     return this->position;
 }
 

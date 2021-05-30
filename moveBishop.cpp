@@ -1,7 +1,9 @@
 #include "moveBishop.hpp"
 
-bool MoveBishop::testMove(long long position, long long newMove, long long playerState, long long boardState) const {
-    long long attemptedMove = 0;
+#include <cstdint>
+
+bool MoveBishop::testMove(uint64_t position, uint64_t newMove, uint64_t playerState, uint64_t boardState) const {
+    uint64_t attemptedMove = 0;
     
     for (int i = 1; i < 8; i++) {
         if (newMove == position << (7 * i) && raycast(position, newMove, 7, boardState)) {

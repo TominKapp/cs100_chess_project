@@ -1,5 +1,7 @@
 #include "player.hpp"
 
+#include <cstdint>
+
 Player::Player(int team) {
     this->team = team;
 }
@@ -20,11 +22,11 @@ void Player::updateBoardState() {
     }
 }
 
-long long Player::getBoardState() const {
+uint64_t Player::getBoardState() const {
     return this->boardstate;
 }
 
-bool Player::makeMove(long long piecePosition, long long newPosition, long long wholeBoardState) {
+bool Player::makeMove(uint64_t piecePosition, uint64_t newPosition, uint64_t wholeBoardState) {
     for (int i = 0; i < 16; i++) { //find if there is a piece at x position
         if (pieces[i]->getPosition() == piecePosition) {
             return pieces[i]->makeMove(newPosition, this->boardstate, wholeBoardState);
@@ -42,11 +44,18 @@ void Player::testCaptures(Player* enemy) { //set a piece to captured if it coinc
     }
 }
 
-long long Player::getAllValidMoves(long long wholeBoardState) {
-  long long allmoves = 0;
+uint64_t Player::getAllValidMoves(uint64_t wholeBoardState) {
+  uint64_t allmoves = 0;
   for (int i = 0; i< 16; i++) {
     allmoves |= pieces[i]->getAllValidMoves(this->boardstate, wholeBoardState);
   }
   
   return allmoves;
+}
+
+bool Player::testCheck(Player* enemy, uint64_t wholeBoardState) {
+  if (enemy->getAllValidMoves(wholeBoardState) & pieces[3] != 0) { //king will always be index 3
+    return true;
+  }
+  return false;
 }

@@ -1,7 +1,8 @@
 #include "moveKing.hpp"
 #include <math.h> 
+#include <cstdint>
 
-bool MoveKing::testMove(long long position, long long newMove, long long playerState, long long boardState) const {
+bool MoveKing::testMove(uint64_t position, uint64_t newMove, uint64_t playerState, uint64_t boardState) const {
     int magicNumbers[4] = {1, 7, 8, 9};
     
     if (newMove & playerState == 0) { //disallow move if it would land on a friendly piece

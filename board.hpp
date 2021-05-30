@@ -3,6 +3,8 @@
 
 #pragma once
 
+#include <cstdint>
+
 #include "player.hpp"
 
 class Board {
@@ -10,14 +12,14 @@ class Board {
         Player* white;
         Player* black;
         
-        long long boardstate;
+        uint64_t boardstate;
     
     public:
         Board(Player* w, Player* b);
         //~Board();
         
         void updateBoardState();
-        long long getBoardState();
+        uint64_t getBoardState();
 };
 
 #endif

@@ -1,6 +1,7 @@
 #include "moveKnight.hpp"
+#include <cstdint>
 
-bool MoveKnight::testMove(long long position, long long newMove, long long playerState, long long boardState) const {
+bool MoveKnight::testMove(uint64_t position, uint64_t newMove, uint64_t playerState, uint64_t boardState) const {
     int magicNumbers[4] = {6, 10, 15, 17};
     
     if (newMove & playerState == 0) { //disallow move if it would land on a friendly piece

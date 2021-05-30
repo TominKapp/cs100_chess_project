@@ -2,11 +2,12 @@
 #define __MOVE_HPP__
 
 #include <math.h>
+#include <cstdint>
 
 class Move {
     protected:
         //cast a ray from start to end and return false if there is a collision
-        bool raycast(long long start, long long end, int slope, long long boardstate) const {
+        bool raycast(uint64_t start, uint64_t end, int slope, uint64_t boardstate) const {
             int i = 1;
             if (end < start) { //>>
                 while (start >> (slope * i) != end) {
@@ -28,7 +29,7 @@ class Move {
         }
     
     public:
-        virtual bool testMove(long long position, long long newMove, long long playerState, long long boardState) const = 0;
+        virtual bool testMove(uint64_t position, uint64_t newMove, uint64_t playerState, uint64_t boardState) const = 0;
 };
 
 #endif

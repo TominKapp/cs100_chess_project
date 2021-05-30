@@ -1,7 +1,8 @@
 #include "moveQueen.hpp"
 #include <math.h> 
+#include <cstdint>
 
-bool MoveQueen::testMove(long long position, long long newMove, long long playerState, long long boardState) const {
+bool MoveQueen::testMove(uint64_t position, uint64_t newMove, uint64_t playerState, uint64_t boardState) const {
     int magicNumbers[4] = {1, 7, 8, 9};
     
     for (int i = 1; i < 8; i++) { 

@@ -2,10 +2,11 @@
 #define __PLAYER_HPP__
 
 #include "piece.hpp"
+#include <cstdint>
 
 class Player {
     private:
-        long long boardstate;
+        uint64_t boardstate;
         Piece* pieces[16] = {nullptr}; 
         int team;
         
@@ -14,10 +15,11 @@ class Player {
         ~Player();
         
         void updateBoardState();
-        long long getBoardState() const;
-        bool makeMove(long long piecePosition, long long newPosition, long long boardState);
+        uint64_t getBoardState() const;
+        bool makeMove(uint64_t piecePosition, uint64_t newPosition, uint64_t boardState);
         void testCaptures(Player* enemy);
-        long long getAllValidMoves(long long wholeBoardState);
+        uint64_t getAllValidMoves(uint64_t wholeBoardState);
+        bool testCheck(Player* enemy, uint64_t wholeBoardState);
 };
 
 #endif
