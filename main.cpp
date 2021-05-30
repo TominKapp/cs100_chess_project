@@ -1,5 +1,6 @@
 #include "piece.hpp"
 #include "move.hpp"
+#include "player.hpp"
 
 #include <cstdint>
 #include <iostream>
@@ -24,11 +25,11 @@ void printFormatted(const uint64_t &l) {
 }
 
 int main () {
-    Piece* p = new Piece(4, 1, pow(2,27));
-
-    //printFormatted(p->getPosition());
+    Player* p = new Player(1);
     
-    printFormatted(p->getAllValidMoves(p->getPosition(), p->getPosition()));
+    printFormatted(p->getBoardState());
+    printFormatted(p->getAllValidMoves(p->getBoardState()));
     
+    delete p;
     return 0;
 }

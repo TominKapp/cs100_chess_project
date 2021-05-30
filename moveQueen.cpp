@@ -23,43 +23,45 @@ bool MoveQueen::testMove(uint64_t position, uint64_t newMove, uint64_t playerSta
         }
     }
     */
-    for (int i = 1; i < 8 - getRow(position); i++) { //+y
-        if (newMove == position << (8 * i) && raycast(position, newMove, 8, boardState)) {
-            return true;
-        }
-    }
     
-    for (int i = 1; i <= getRow(position); i++) { //-y
-        if (newMove == position >> (8 * i) && raycast(position, newMove, 8, boardState)) {
-            return true;
-        }
-    }
-    
-    for (int i = 1; i < 8 - getColumn(position); i++) { //+x
-        if (newMove == position << (1 * i) && raycast(position, newMove, 1, boardState)) {
-            return true;
-        }
-    }
-    
-    for (int i = 1; i <= getColumn(position); i++) { //-y
-        if (newMove == position >> (1 * i) && raycast(position, newMove, 1, boardState)) {
-            return true;
-        }
-    }
-    
-    if ((abs(x2 - x1) == abs(y1 - y2)) && (abs(y1 - y2) > 0)) {
-        if (((x1 < x2) && (y1 < y2)) || ((x1 > x2) && (y1 > y2))) {
-            if (raycast(position, newMove, 9, boardState)) {
+    if ((newMove & playerState) == 0) { 
+        for (int i = 1; i < 8 - getRow(position); i++) { //+y
+            if (newMove == position << (8 * i) && raycast(position, newMove, 8, boardState)) {
                 return true;
             }
         }
-        else {
-            if (raycast(position, newMove, 7, boardState)) {
+        
+        for (int i = 1; i <= getRow(position); i++) { //-y
+            if (newMove == position >> (8 * i) && raycast(position, newMove, 8, boardState)) {
                 return true;
             }
         }
+        
+        for (int i = 1; i < 8 - getColumn(position); i++) { //+x
+            if (newMove == position << (1 * i) && raycast(position, newMove, 1, boardState)) {
+                return true;
+            }
+        }
+        
+        for (int i = 1; i <= getColumn(position); i++) { //-y
+            if (newMove == position >> (1 * i) && raycast(position, newMove, 1, boardState)) {
+                return true;
+            }
+        }
+        
+        if ((abs(x2 - x1) == abs(y1 - y2)) && (abs(y1 - y2) > 0)) {
+            if (((x1 < x2) && (y1 < y2)) || ((x1 > x2) && (y1 > y2))) {
+                if (raycast(position, newMove, 9, boardState)) {
+                    return true;
+                }
+            }
+            else {
+                if (raycast(position, newMove, 7, boardState)) {
+                    return true;
+                }
+            }
+        }
     }
-    
     
     
     return false;

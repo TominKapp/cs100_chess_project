@@ -11,15 +11,17 @@ bool MoveBishop::testMove(uint64_t position, uint64_t newMove, uint64_t playerSt
     int x2 = getColumn(newMove);
     int y2 = getRow(newMove);
     
-    if ((abs(x2 - x1) == abs(y1 - y2)) && (abs(y1 - y2) > 0)) {
-        if (((x1 < x2) && (y1 < y2)) || ((x1 > x2) && (y1 > y2))) {
-            if (raycast(position, newMove, 9, boardState)) {
-                return true;
+    if ((newMove & playerState) == 0) {  
+        if ((abs(x2 - x1) == abs(y1 - y2)) && (abs(y1 - y2) > 0)) {
+            if (((x1 < x2) && (y1 < y2)) || ((x1 > x2) && (y1 > y2))) {
+                if (raycast(position, newMove, 9, boardState)) {
+                    return true;
+                }
             }
-        }
-        else {
-            if (raycast(position, newMove, 7, boardState)) {
-                return true;
+            else {
+                if (raycast(position, newMove, 7, boardState)) {
+                    return true;
+                }
             }
         }
     }

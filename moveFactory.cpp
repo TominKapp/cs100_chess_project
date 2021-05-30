@@ -35,7 +35,7 @@ Move* MoveFactory::createMoveStrategy(int type, int team) { //0 = pawn, 1 = rook
             break;
             
         case 4:
-            return new MoveQueen();
+            return new MoveQueen(); //works
             break;
             
         case 5:

@@ -18,8 +18,8 @@ class Player {
         uint64_t getBoardState() const;
         bool makeMove(uint64_t piecePosition, uint64_t newPosition, uint64_t boardState);
         void testCaptures(Player* enemy);
-        uint64_t getAllValidMoves(uint64_t wholeBoardState);
-        bool testCheck(Player* enemy, uint64_t wholeBoardState);
+        uint64_t getAllValidMoves(uint64_t wholeBoardState) const;
+        bool testCheck(Player* enemy, uint64_t wholeBoardState) const;
 };
 
 #endif
