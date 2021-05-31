@@ -17,7 +17,7 @@ class Board {
     
     public:
         Board();
-        //~Board();
+        ~Board();
         
         void updateBoardState();
         uint64_t getBoardState() const;

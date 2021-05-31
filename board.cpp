@@ -12,6 +12,11 @@ Board::Board() {
     this->updateBoardState();
 }
 
+Board::~Board() {
+    delete this->white;
+    delete this->black;
+}
+
 uint64_t Board::cartesianToBitmask(int column, int row) const {
     if ((column < 0) | (column > 7) | (row < 0) | (row > 7)) { //return 0 if out of bounds
         return 0;
@@ -136,8 +141,9 @@ bool Board::inputMove(int team) {
 
 void Board::runGame() {
     int team = 0;
-    
-    while (true) {
+    bool loop = true;
+
+    while (loop) {
         drawDebugBoard();
         
         if (inputMove(team)) {
@@ -146,11 +152,19 @@ void Board::runGame() {
                     white->testCaptures(black);
                     team = 1;
                     std::cout << "white's move" << std::endl;
+		    if (white->testCheck(black, this->boardstate)) {
+			std::cout << "in check" << std::endl;
+		    }
+		    loop = false;
                     break;
                 case 1:
                     black->testCaptures(white);
                     team = 0;
                     std::cout << "black's move" << std::endl;
+		    if (black->testCheck(white, this->boardstate)) {
+			std::cout << "in check" << std::endl;
+		    }
+		    loop = false;
                     break;
             }
         }
