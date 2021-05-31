@@ -24,6 +24,7 @@ class Board {
         void drawDebugBoard() const;
         bool GUIinputMove(int team, int startX, int startY, int endX, int endY);
         bool inputMove(int team);
+        bool gameOver() const;
         void runGame();
 };
 

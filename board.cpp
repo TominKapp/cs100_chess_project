@@ -139,11 +139,26 @@ bool Board::inputMove(int team) {
     }
 }
 
+bool Board::gameOver() const {
+    if (white->getAllValidMoves(boardstate) == 0) { 
+        return true;
+    }
+    
+    if (black->getAllValidMoves(boardstate) == 0) {
+        return true;
+    }
+    
+    if (white->kingIsCaptured() || black->kingIsCaptured()) {
+        return true;
+    }
+        
+    return false;
+}
+
 void Board::runGame() {
     int team = 0;
-    bool loop = true;
 
-    while (loop) {
+    while (!gameOver()) {
         drawDebugBoard();
         
         if (inputMove(team)) {
@@ -152,19 +167,11 @@ void Board::runGame() {
                     white->testCaptures(black);
                     team = 1;
                     std::cout << "white's move" << std::endl;
-		    if (white->testCheck(black, this->boardstate)) {
-			std::cout << "in check" << std::endl;
-		    }
-		    loop = false;
                     break;
                 case 1:
                     black->testCaptures(white);
                     team = 0;
                     std::cout << "black's move" << std::endl;
-		    if (black->testCheck(white, this->boardstate)) {
-			std::cout << "in check" << std::endl;
-		    }
-		    loop = false;
                     break;
             }
         }

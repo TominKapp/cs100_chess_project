@@ -104,6 +104,17 @@ bool Player::testCheck(Player* enemy, uint64_t wholeBoardState) const {
     return false;
 }
 
+bool Player::kingIsCaptured() const {
+    if (team == 0 && pieces[4]->getPosition() == 0) {
+        return true;
+    }
+    else if (team == 1 && pieces[3]->getPosition() == 0) {
+        return true;
+    }
+    
+    return false;
+}
+
 int Player::getPieceAt(uint64_t piecePosition) const {
     for (int i = 0; i< 16; i++) {
         if (pieces[i]->getPosition() == piecePosition) {
