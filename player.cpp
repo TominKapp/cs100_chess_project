@@ -90,14 +90,14 @@ uint64_t Player::getAllValidMoves(uint64_t wholeBoardState) const {
 bool Player::testCheck(Player* enemy, uint64_t wholeBoardState) const {
     uint64_t kingPos;
   
-    if (team == 0) {
+    if (team == 0) { //set king index based on position
         kingPos = pieces[4]->getPosition();
     }
     else {
         kingPos = pieces[3]->getPosition();
     }
     
-    if (enemy->getAllValidMoves(wholeBoardState) & kingPos != 0) { //king will always be index 3
+    if ((enemy->getAllValidMoves(wholeBoardState) & kingPos) != 0) {
         return true;
     }
     

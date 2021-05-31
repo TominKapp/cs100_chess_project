@@ -22,7 +22,8 @@ class Board {
         void updateBoardState();
         uint64_t getBoardState() const;
         void drawDebugBoard() const;
-        bool makeMove(int team);
+        bool GUIinputMove(int team, int startX, int startY, int endX, int endY);
+        bool inputMove(int team);
         void runGame();
 };
 

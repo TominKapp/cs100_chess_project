@@ -94,7 +94,19 @@ void Board::drawDebugBoard() const {
     std::cout << "76543210 " << std::endl;
 }
 
-bool Board::makeMove(int team) {
+bool Board::GUIinputMove(int team, int startX, int startY, int endX, int endY) {
+    uint64_t scoord = cartesianToBitmask(startX, startY);
+    uint64_t ecoord = cartesianToBitmask(endX, endY);
+    
+    if (team == 0) {
+        return black->makeMove(scoord, ecoord, this->boardstate);
+    }
+    else {
+        return white->makeMove(scoord, ecoord, this->boardstate);
+    }
+}
+
+bool Board::inputMove(int team) {
     char srow;
     char scol;
     
@@ -128,7 +140,7 @@ void Board::runGame() {
     while (true) {
         drawDebugBoard();
         
-        if (makeMove(team)) {
+        if (inputMove(team)) {
             switch(team) {
                 case 0:
                     white->testCaptures(black);
