@@ -29,7 +29,9 @@ bool Piece::testMove(uint64_t newPosition, uint64_t playerState, uint64_t boardS
 bool Piece::makeMove(uint64_t newPosition, uint64_t playerState, uint64_t boardState) {
     if (testMove(newPosition, playerState, boardState)) {
         this->position = newPosition;
+        return true;
     }
+    return false;
 }
 
 uint64_t Piece::getAllValidMoves(uint64_t playerState, uint64_t boardState) const {

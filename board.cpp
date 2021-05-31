@@ -10,6 +10,14 @@ Board::Board() {
     this->black = new Player(0);
 }
 
+uint64_t Board::cartesianToBitmask(int column, int row) const {
+    if ((column < 0) | (column > 7) | (row < 0) | (row > 7)) { //return 0 if out of bounds
+        return 0;
+    }
+            
+    return pow(2, ((row * 8) + column));
+}
+
 void Board::updateBoardState() {
     this->boardstate = white->getBoardState() | black->getBoardState();
 }
@@ -21,6 +29,7 @@ uint64_t Board::getBoardState() const {
 void Board::drawDebugBoard() const {
     char output;
     
+    std::cout << "-------- " << std::endl;
     for (int i = 63; i >= 0; i--) {
         //output = '#';
         
@@ -76,7 +85,72 @@ void Board::drawDebugBoard() const {
         std::cout << output;
         
         if (i % 8 == 0) {
-            std::cout << std::endl;
+            std::cout << "|" << (i / 8) << std::endl;
+        }
+    }
+    std::cout << "-------- " << std::endl;
+    std::cout << "76543210 " << std::endl;
+}
+
+bool Board::makeMove(int team) {
+    char srow;
+    char scol;
+    
+    char erow;
+    char ecol;
+    
+    uint64_t scoord;
+    uint64_t ecoord;
+    
+    std::cout << "Input starting position: ";
+    std::cin >> scol >> srow;
+    
+    std::cout << "Input destination: ";
+    std::cin >> ecol >> erow;
+    std::cout << std::endl;
+    
+    scoord = cartesianToBitmask(static_cast<int>(scol) - 48, static_cast<int>(srow) - 48);
+    ecoord = cartesianToBitmask(static_cast<int>(ecol) - 48, static_cast<int>(erow) - 48);
+    
+    if (team == 0) {
+        return black->makeMove(scoord, ecoord, this->boardstate);
+    }
+    else {
+        return white->makeMove(scoord, ecoord, this->boardstate);
+    }
+}
+
+void Board::runGame() {
+    int team = 0;
+    
+    while (true) {
+        drawDebugBoard();
+        
+        if (makeMove(team)) {
+            switch(team) {
+                case 0:
+                    team = 1;
+                    std::cout << "white's move" << std::endl;
+                    break;
+                case 1:
+                    team = 0;
+                    std::cout << "black's move" << std::endl;
+                    break;
+            }
+        }
+        else {
+            std::cout << "invalid move" << std::endl;
+        }
+        
+        updateBoardState();
+        
+        switch(team) {
+            case 0:
+                white->testCaptures(black);
+                break;
+            case 1:
+                black->testCaptures(white);
+                break;
         }
     }
 }

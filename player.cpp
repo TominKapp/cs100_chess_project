@@ -59,13 +59,15 @@ uint64_t Player::getBoardState() const {
 }
 
 bool Player::makeMove(uint64_t piecePosition, uint64_t newPosition, uint64_t wholeBoardState) {
+    bool valid = false;
+    
     for (int i = 0; i < 16; i++) { //find if there is a piece at x position
         if (pieces[i]->getPosition() == piecePosition) {
-            return pieces[i]->makeMove(newPosition, this->boardstate, wholeBoardState);
+            valid = pieces[i]->makeMove(newPosition, this->boardstate, wholeBoardState);
             this->updateBoardState();
         }
     }
-    return false;
+    return valid;
 } //returns true if the move was made and false otherwise
 
 void Player::testCaptures(Player* enemy) { //set a piece to captured if it coincides with enemy position

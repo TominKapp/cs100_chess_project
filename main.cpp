@@ -28,7 +28,7 @@ void printFormatted(const uint64_t &l) {
 int main () {
     Board* b = new Board();
     
-    b->drawDebugBoard();
+    b->runGame();
     
     delete b;
     return 0;
