@@ -101,3 +101,13 @@ bool Player::testCheck(Player* enemy, uint64_t wholeBoardState) const {
     
     return false;
 }
+
+int Player::getPieceAt(uint64_t piecePosition) const {
+    for (int i = 0; i< 16; i++) {
+        if (pieces[i]->getPosition() == piecePosition) {
+            return pieces[i]->getType();
+        }
+    }
+    
+    return -1;
+}

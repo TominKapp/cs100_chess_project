@@ -22,9 +22,11 @@ class Piece {
         uint64_t getAllValidMoves(uint64_t playerState, uint64_t boardState) const;
         //bool testCheck() const; //test if piece is in check (move this to player)
         
-        uint64_t getPosition();
-        bool isCaptured();
+        uint64_t getPosition() const;
+        bool isCaptured() const;
         void becomeCaptured();
+        
+        int getType() const;
 };
 
 #endif

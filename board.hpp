@@ -15,11 +15,12 @@ class Board {
         uint64_t boardstate;
     
     public:
-        Board(Player* w, Player* b);
+        Board();
         //~Board();
         
         void updateBoardState();
-        uint64_t getBoardState();
+        uint64_t getBoardState() const;
+        void drawDebugBoard() const;
 };
 
 #endif

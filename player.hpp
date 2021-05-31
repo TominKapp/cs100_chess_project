@@ -20,6 +20,7 @@ class Player {
         void testCaptures(Player* enemy);
         uint64_t getAllValidMoves(uint64_t wholeBoardState) const;
         bool testCheck(Player* enemy, uint64_t wholeBoardState) const;
+        int getPieceAt(uint64_t piecePosition) const;
 };
 
 #endif

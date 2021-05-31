@@ -45,15 +45,19 @@ uint64_t Piece::getAllValidMoves(uint64_t playerState, uint64_t boardState) cons
     return allMoves;
 }
 
-uint64_t Piece::getPosition() {
+uint64_t Piece::getPosition() const {
     return this->position;
 }
 
-bool Piece::isCaptured() {
+bool Piece::isCaptured() const {
     return this->captured;
 }
 
 void Piece::becomeCaptured() {
     this->position = 0; //effectively remove from board
     this->captured = true;
+}
+
+int Piece::getType() const {
+    return this->type;
 }
