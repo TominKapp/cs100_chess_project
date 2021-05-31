@@ -2,9 +2,11 @@
 #define __MOVEWHITEPAWN_HPP__
 
 #include "move.hpp"
+#include <cstdint>
 
-class MoveWhitePawn: public move {
-    bool testMove(long long position, long long newMove);
+class MoveWhitePawn: public Move {
+    public:
+        bool testMove(uint64_t position, uint64_t newMove, uint64_t playerState, uint64_t boardState) const;
 };
 
 #endif
