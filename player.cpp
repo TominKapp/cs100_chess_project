@@ -72,7 +72,7 @@ bool Player::makeMove(uint64_t piecePosition, uint64_t newPosition, uint64_t who
 
 void Player::testCaptures(Player* enemy) { //set a piece to captured if it coincides with enemy position
     for (int i = 0; i < 16; i++) {
-        if (pieces[i]->getPosition() & enemy->getBoardState() != 0) {
+        if ((pieces[i]->getPosition() & enemy->getBoardState()) != 0) {
             pieces[i]->becomeCaptured();
         }
     }

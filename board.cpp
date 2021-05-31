@@ -8,6 +8,8 @@
 Board::Board() {
     this->white = new Player(1);
     this->black = new Player(0);
+
+    this->updateBoardState();
 }
 
 uint64_t Board::cartesianToBitmask(int column, int row) const {
@@ -129,10 +131,12 @@ void Board::runGame() {
         if (makeMove(team)) {
             switch(team) {
                 case 0:
+                    white->testCaptures(black);
                     team = 1;
                     std::cout << "white's move" << std::endl;
                     break;
                 case 1:
+                    black->testCaptures(white);
                     team = 0;
                     std::cout << "black's move" << std::endl;
                     break;
@@ -143,14 +147,5 @@ void Board::runGame() {
         }
         
         updateBoardState();
-        
-        switch(team) {
-            case 0:
-                white->testCaptures(black);
-                break;
-            case 1:
-                black->testCaptures(white);
-                break;
-        }
     }
 }
