@@ -29,3 +29,4 @@ class Board {
 };
 
 #endif
+>>>>>>> master
