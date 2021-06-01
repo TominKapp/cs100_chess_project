@@ -1,13 +1,11 @@
 #include "../header/game_object.hpp"
 
-
 GameObject::~GameObject() {
-    delete texture;
+    
 }
 
-
 GameObject::GameObject(const char* imgFile, SDL_Renderer* r, int w, int h) {
-    //never delete rendere
+
     this->renderer = r;
     this->texture = TextureManager::load_Texture(imgFile, r);
 
@@ -29,4 +27,8 @@ void GameObject::render() {
 void GameObject::update() {
     this->destRect.x = this->x;
     this->destRect.y = this->y;
+}
+
+void GameObject::clean() {
+    SDL_DestroyTexture(texture);
 }

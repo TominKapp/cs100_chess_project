@@ -3,7 +3,6 @@
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
-//#include "header/piece.hpp"
 #include "texture_manager.hpp"
 
 class GameObject {
@@ -19,6 +18,7 @@ class GameObject {
 
         void update();
         void render();
+        void clean();
 
         void setX(int x) {this->x = x;}
         void setY(int y) {this->y = y;}
