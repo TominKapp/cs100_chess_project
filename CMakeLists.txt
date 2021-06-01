@@ -6,6 +6,18 @@ SET(CMAKE_CXX_STANDARD 11)
 
 ADD_EXECUTABLE(test
     tests/unit_test.cpp
+    
+    board.cpp
+    moveBishop.cpp
+    moveBlackPawn.cpp
+    moveFactory.cpp
+    moveKing.cpp
+    moveKnight.cpp
+    moveQueen.cpp
+    moveRook.cpp
+    moveWhitePawn.cpp
+    piece.cpp
+    player.cpp
 )
 
 ADD_EXECUTABLE(main
