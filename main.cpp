@@ -1,35 +1,37 @@
-#include "piece.hpp"
-#include "move.hpp"
-#include "player.hpp"
-#include "board.hpp"
+#include "GUI/header/gui_board.hpp"
 
-#include <cstdint>
-#include <iostream>
-#include <math.h>
+//ChessGame* game = nullptr;
+GUI_Board* game;
 
-void printFormatted(const uint64_t &l) {
-    uint64_t comp = 0x8000000000000000;
-    
-    for (int i = 0; i < 64; i++) {
-        if (comp & (l << i)) {
-            std::cout <<"1";
-        }
-        else {
-            std::cout << "0";
-        }
-        
-        if ((i + 1) % 8 == 0) {
-            std::cout << std::endl;
-        }
+int main(int argc, const char* args[]) {
+    /*
+    //game = new ChessGame();
+    //game->init(SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,800,800);
+
+    while(game->running()) {
+        game->handleEvents();
+        game->update();
+        game->render();
     }
-    std::cout << std::endl;
-}
 
-int main () {
-    Board* b = new Board();
+    game->clean();
+    */
+    game = new GUI_Board();
+    game->init(SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,800,800);
+
     
-    b->runTerminalGame();
+    while (!game->gameOver(1) && game->running()) {
+        
+        game->handleEvents();
+        game->update();
+        game->render();
+        
+        game->updateBoardState();
+    }
+    game->drawDebugBoard();
     
-    delete b;
+
+    game->clean();
+
     return 0;
 }
