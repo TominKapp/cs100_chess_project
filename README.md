@@ -71,9 +71,6 @@ The two design patterns we decided on are first:
   ![](./images/screenshot3.png)
   
  ## Installation/Usage
- GUI Valgrind
-  Running Valgrind on the GUI was no easy task. At first, we were overwhelmed by the number of errors we got (it was over 10000 lines of code with over 2 million bytes lost at some point). However, we knew something must have been off because our board class ran with no errors. So we searched online and came by a reddit post describing the problems a user was having running Valgrind on their system. Their solution was to add a suppression to valgrind... one which we copied and edited for our own purposes. This is the purpose of the valgrind_suppressions.txt file 
-    To run this we use: "valgrind --gen-suppressions=all --suppressions=./valgrind_suppressions.txt --leak-check=full --show-leak-kinds=all ./main"
 
 Instruction to create Monkey Chess (using a linux based machine)
 * Install all neccessary programs/libraries
@@ -87,5 +84,16 @@ Instruction to create Monkey Chess (using a linux based machine)
 * run main
 
  ## Testing
- > How was your project tested/validated? If you used CI, you should have a "build passing" badge in this README.
  
+GUI Valgrind:
+  Running Valgrind on the GUI was no easy task. At first, we were overwhelmed by the number of errors we got (it was over 10000 lines of code with over 2 million bytes lost at some point). However, we knew something must have been off because our board class ran with no valgrind memory leaks. So we searched online and came by a reddit post describing the problems a user was having running Valgrind with SDL2 on their system. Their solution was to add a suppression to valgrind... one which we copied and edited for our own purposes. This is the purpose of the valgrind_suppressions.txt file.
+
+* To run this we use: "valgrind --gen-suppressions=all --suppressions=./valgrind_suppressions.txt --leak-check=full --show-leak-kinds=all ./main"
+
+Google Test:
+  As for the rest of the pieces, since the board state is recorded as a 64 bit unsigned int, we converted a number into hex and used that to show all of the possible locations that a piece could move to given an initial starting point. This allowed us to know that all of the pieces were moving correctly, and that their intial position was being recognized.
+
+To run this we use: 
+  * cmake3 .
+  * make
+  * ./test
