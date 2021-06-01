@@ -20,20 +20,20 @@ ADD_EXECUTABLE(test
     player.cpp
 )
 
-ADD_EXECUTABLE(main
-    board.cpp
-    main.cpp
-    moveBishop.cpp
-    moveBlackPawn.cpp
-    moveFactory.cpp
-    moveKing.cpp
-    moveKnight.cpp
-    moveQueen.cpp
-    moveRook.cpp
-    moveWhitePawn.cpp
-    piece.cpp
-    player.cpp
-)
+#ADD_EXECUTABLE(main
+#    board.cpp
+#    main.cpp
+#    moveBishop.cpp
+#    moveBlackPawn.cpp
+#    moveFactory.cpp
+#    moveKing.cpp
+#    moveKnight.cpp
+#    moveQueen.cpp
+#    moveRook.cpp
+#    moveWhitePawn.cpp
+#    piece.cpp
+#    player.cpp
+#)
 
 ADD_COMPILE_OPTIONS(-std=c++0x)
 TARGET_LINK_LIBRARIES(test gtest)
