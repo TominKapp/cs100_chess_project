@@ -4,6 +4,11 @@ ADD_SUBDIRECTORY(googletest)
 
 SET(CMAKE_CXX_STANDARD 11)
 
+project(MonkeyChess)
+
+find_package(SDL2 REQUIRED)
+include_directories(${SDL2_INCLUDE_DIRS})
+
 ADD_EXECUTABLE(test
     tests/unit_test.cpp
     
@@ -39,6 +44,7 @@ ADD_EXECUTABLE(main
     player.cpp
 )
 
-ADD_COMPILE_OPTIONS(-std=c++0x -lSDL2 -lSDL2_image )
+ADD_COMPILE_OPTIONS(-std=c++0x)
 TARGET_LINK_LIBRARIES(test gtest)
+TARGET_LINK_LIBRARIES(main ${SDL2_LIBRARIES})
 TARGET_COMPILE_DEFINITIONS(test PRIVATE gtest_disable_pthreads=ON)
