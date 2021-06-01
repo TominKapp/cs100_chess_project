@@ -1,5 +1,5 @@
 #include "../header/gui_board.hpp"
-//#include "../../backend/header/player.hpp"
+#include "../../player.hpp"
 
 #include <cstdint>
 #include <iostream>

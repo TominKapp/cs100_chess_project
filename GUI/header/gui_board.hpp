@@ -5,7 +5,7 @@
 #include <SDL2/SDL.h>
 #include <iostream>
 
-#include "../../backend/header/player.hpp"
+#include "../../player.hpp"
 #include "game_object.hpp"
 
 class GUI_Board {

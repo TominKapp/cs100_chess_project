@@ -6,6 +6,7 @@
 
 #include "game_object.hpp"
 #include "texture_manager.hpp"
+#include "mouse_manager.hpp"
 //#include "../../backend/header/piece.hpp"
 //#include "../../backend/header/player.hpp"
 

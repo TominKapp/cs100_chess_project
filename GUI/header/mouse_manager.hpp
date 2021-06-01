@@ -1,4 +1,5 @@
-#include <SDL2/SDL.h>
+
+//#include <SDL2/SDL.h>
 
 
 /*
@@ -15,6 +16,7 @@ on let go
     if not, go back to original pos
 
 */
+/*
 class MouseManager {
     public:
         static void 
@@ -25,3 +27,4 @@ class MouseManager {
         GameObject * currentMovingObj
 
 }
+*/
