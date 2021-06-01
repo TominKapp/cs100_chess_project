@@ -5,13 +5,13 @@ ChessGame::ChessGame() {
     //init(SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,w,h);
 }
 ChessGame::~ChessGame() {
-    /*
+    
     delete window;
     delete renderer;
     for (int i = 0; i < 64; i++) {
         delete pieces[i];
     }
-    */
+    
 }
 
 void ChessGame::init(int x, int y, int w, int h) {
