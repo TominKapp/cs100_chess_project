@@ -101,6 +101,6 @@ To run this we use:
  ## MonkeyChess releases to the public
  ![monkeyChess1](./images/monkeyChess1.png)
  ![monkeyChess2](./images/monkeyChess2.png)
- ![monkeyChess3](./images/monkeyChess3.png)
+ ![monkeyChess3](./images/monkeyChess3.jpg)
  ![monkeyChess4](./images/monkeyChess4.png)
  
