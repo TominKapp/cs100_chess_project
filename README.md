@@ -40,11 +40,6 @@ The two design patterns we decided on are first:
   **Board and relationships to player and piece**
   ![Singleton design battern for board and relationships to player and piece](./images/OMT2.png)
   
-   **Strategy design pattern for the print class (Not finalized)**
-   
-   ![Singleton design battern for the print class](./images/printOMT.png)
- 
->>>>>>> 388cb6bcf8b4dd452ea6408e1452a7d1eb4b0166
  > ## Phase III
  > You will need to schedule a check-in with the TA (during lab hours or office hours). Your entire team must be present. 
  > * Before the meeting you should perform a sprint plan like you did in Phase II
