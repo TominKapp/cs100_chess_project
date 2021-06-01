@@ -1,2 +1,7 @@
 *.exe
 *.out
+bin 
+lib 
+CMakeCache.txt
+CMakeFiles
+cmake_install.cmake
