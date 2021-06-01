@@ -2,13 +2,14 @@
 
 
 GameObject::~GameObject() {
-    
+    delete texture;
 }
 
 
 GameObject::GameObject(const char* imgFile, SDL_Renderer* r, int w, int h) {
-
+    //never delete rendere
     this->renderer = r;
+    //delete this
     this->texture = TextureManager::load_Texture(imgFile, r);
 
     //this->srcRect = NULL;
