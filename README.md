@@ -77,7 +77,7 @@ Instruction to create Monkey Chess (using a linux based machine)
   * sudo apt-get install libsdl2-image-dev
 * cmake3 .
 * make
-* if you want GUI run "g++ -w *.cpp GUI/src/* -lSDL2 -lSDL2_image -o main" 
+* if you want GUI run "g++ -w \*.cpp GUI/src/\* -lSDL2 -lSDL2_image -o main" 
 * run main
 
  ## Testing
