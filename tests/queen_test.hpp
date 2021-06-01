@@ -4,12 +4,12 @@
 #include "../piece.hpp"
 #include <math.h>
 
-Test(QueenTest, testPosition){
+TEST(QueenTest, testPosition){
    Piece p(4, 1, 0x8000000);
    EXPECT_EQ(0x8000000, p.getPosition());
 }
 TEST(QueenTest, possibleMoves) {
     Piece p(4, 1,0x8000000);
-    EXPECT_EQ(0x925438ff38549211, p.getAllValidMoves(0x8000000,0x8000000));
+    EXPECT_EQ(static_cast<uint64_t>(9820426766351346249), p.getAllValidMoves(0x8000000,0x8000000));
 }
 #endif

@@ -68,10 +68,10 @@ RM = /usr/bin/cmake3 -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/csmajs/dboul001/final-project-mslan002_tkapp001
+CMAKE_SOURCE_DIR = /class/classes/mslan002/final-project
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/csmajs/dboul001/final-project-mslan002_tkapp001
+CMAKE_BINARY_DIR = /class/classes/mslan002/final-project
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -146,9 +146,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/csmajs/dboul001/final-project-mslan002_tkapp001/CMakeFiles /home/csmajs/dboul001/final-project-mslan002_tkapp001/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /class/classes/mslan002/final-project/CMakeFiles /class/classes/mslan002/final-project/CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/csmajs/dboul001/final-project-mslan002_tkapp001/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /class/classes/mslan002/final-project/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -175,19 +175,6 @@ preinstall/fast:
 depend:
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
-
-#=============================================================================
-# Target rules for targets named main
-
-# Build rule for target.
-main: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 main
-.PHONY : main
-
-# fast build rule for target.
-main/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
-.PHONY : main/fast
 
 #=============================================================================
 # Target rules for targets named test
@@ -260,7 +247,6 @@ board.o: board.cpp.o
 
 # target to build an object file
 board.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/board.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/board.cpp.o
 .PHONY : board.cpp.o
 
@@ -270,7 +256,6 @@ board.i: board.cpp.i
 
 # target to preprocess a source file
 board.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/board.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/board.cpp.i
 .PHONY : board.cpp.i
 
@@ -280,36 +265,8 @@ board.s: board.cpp.s
 
 # target to generate assembly for a file
 board.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/board.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/board.cpp.s
 .PHONY : board.cpp.s
-
-main.o: main.cpp.o
-
-.PHONY : main.o
-
-# target to build an object file
-main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.o
-.PHONY : main.cpp.o
-
-main.i: main.cpp.i
-
-.PHONY : main.i
-
-# target to preprocess a source file
-main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.i
-.PHONY : main.cpp.i
-
-main.s: main.cpp.s
-
-.PHONY : main.s
-
-# target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.s
-.PHONY : main.cpp.s
 
 moveBishop.o: moveBishop.cpp.o
 
@@ -317,7 +274,6 @@ moveBishop.o: moveBishop.cpp.o
 
 # target to build an object file
 moveBishop.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/moveBishop.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/moveBishop.cpp.o
 .PHONY : moveBishop.cpp.o
 
@@ -327,7 +283,6 @@ moveBishop.i: moveBishop.cpp.i
 
 # target to preprocess a source file
 moveBishop.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/moveBishop.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/moveBishop.cpp.i
 .PHONY : moveBishop.cpp.i
 
@@ -337,7 +292,6 @@ moveBishop.s: moveBishop.cpp.s
 
 # target to generate assembly for a file
 moveBishop.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/moveBishop.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/moveBishop.cpp.s
 .PHONY : moveBishop.cpp.s
 
@@ -347,7 +301,6 @@ moveBlackPawn.o: moveBlackPawn.cpp.o
 
 # target to build an object file
 moveBlackPawn.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/moveBlackPawn.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/moveBlackPawn.cpp.o
 .PHONY : moveBlackPawn.cpp.o
 
@@ -357,7 +310,6 @@ moveBlackPawn.i: moveBlackPawn.cpp.i
 
 # target to preprocess a source file
 moveBlackPawn.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/moveBlackPawn.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/moveBlackPawn.cpp.i
 .PHONY : moveBlackPawn.cpp.i
 
@@ -367,7 +319,6 @@ moveBlackPawn.s: moveBlackPawn.cpp.s
 
 # target to generate assembly for a file
 moveBlackPawn.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/moveBlackPawn.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/moveBlackPawn.cpp.s
 .PHONY : moveBlackPawn.cpp.s
 
@@ -377,7 +328,6 @@ moveFactory.o: moveFactory.cpp.o
 
 # target to build an object file
 moveFactory.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/moveFactory.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/moveFactory.cpp.o
 .PHONY : moveFactory.cpp.o
 
@@ -387,7 +337,6 @@ moveFactory.i: moveFactory.cpp.i
 
 # target to preprocess a source file
 moveFactory.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/moveFactory.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/moveFactory.cpp.i
 .PHONY : moveFactory.cpp.i
 
@@ -397,7 +346,6 @@ moveFactory.s: moveFactory.cpp.s
 
 # target to generate assembly for a file
 moveFactory.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/moveFactory.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/moveFactory.cpp.s
 .PHONY : moveFactory.cpp.s
 
@@ -407,7 +355,6 @@ moveKing.o: moveKing.cpp.o
 
 # target to build an object file
 moveKing.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/moveKing.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/moveKing.cpp.o
 .PHONY : moveKing.cpp.o
 
@@ -417,7 +364,6 @@ moveKing.i: moveKing.cpp.i
 
 # target to preprocess a source file
 moveKing.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/moveKing.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/moveKing.cpp.i
 .PHONY : moveKing.cpp.i
 
@@ -427,7 +373,6 @@ moveKing.s: moveKing.cpp.s
 
 # target to generate assembly for a file
 moveKing.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/moveKing.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/moveKing.cpp.s
 .PHONY : moveKing.cpp.s
 
@@ -437,7 +382,6 @@ moveKnight.o: moveKnight.cpp.o
 
 # target to build an object file
 moveKnight.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/moveKnight.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/moveKnight.cpp.o
 .PHONY : moveKnight.cpp.o
 
@@ -447,7 +391,6 @@ moveKnight.i: moveKnight.cpp.i
 
 # target to preprocess a source file
 moveKnight.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/moveKnight.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/moveKnight.cpp.i
 .PHONY : moveKnight.cpp.i
 
@@ -457,7 +400,6 @@ moveKnight.s: moveKnight.cpp.s
 
 # target to generate assembly for a file
 moveKnight.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/moveKnight.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/moveKnight.cpp.s
 .PHONY : moveKnight.cpp.s
 
@@ -467,7 +409,6 @@ moveQueen.o: moveQueen.cpp.o
 
 # target to build an object file
 moveQueen.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/moveQueen.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/moveQueen.cpp.o
 .PHONY : moveQueen.cpp.o
 
@@ -477,7 +418,6 @@ moveQueen.i: moveQueen.cpp.i
 
 # target to preprocess a source file
 moveQueen.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/moveQueen.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/moveQueen.cpp.i
 .PHONY : moveQueen.cpp.i
 
@@ -487,7 +427,6 @@ moveQueen.s: moveQueen.cpp.s
 
 # target to generate assembly for a file
 moveQueen.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/moveQueen.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/moveQueen.cpp.s
 .PHONY : moveQueen.cpp.s
 
@@ -497,7 +436,6 @@ moveRook.o: moveRook.cpp.o
 
 # target to build an object file
 moveRook.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/moveRook.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/moveRook.cpp.o
 .PHONY : moveRook.cpp.o
 
@@ -507,7 +445,6 @@ moveRook.i: moveRook.cpp.i
 
 # target to preprocess a source file
 moveRook.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/moveRook.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/moveRook.cpp.i
 .PHONY : moveRook.cpp.i
 
@@ -517,7 +454,6 @@ moveRook.s: moveRook.cpp.s
 
 # target to generate assembly for a file
 moveRook.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/moveRook.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/moveRook.cpp.s
 .PHONY : moveRook.cpp.s
 
@@ -527,7 +463,6 @@ moveWhitePawn.o: moveWhitePawn.cpp.o
 
 # target to build an object file
 moveWhitePawn.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/moveWhitePawn.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/moveWhitePawn.cpp.o
 .PHONY : moveWhitePawn.cpp.o
 
@@ -537,7 +472,6 @@ moveWhitePawn.i: moveWhitePawn.cpp.i
 
 # target to preprocess a source file
 moveWhitePawn.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/moveWhitePawn.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/moveWhitePawn.cpp.i
 .PHONY : moveWhitePawn.cpp.i
 
@@ -547,7 +481,6 @@ moveWhitePawn.s: moveWhitePawn.cpp.s
 
 # target to generate assembly for a file
 moveWhitePawn.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/moveWhitePawn.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/moveWhitePawn.cpp.s
 .PHONY : moveWhitePawn.cpp.s
 
@@ -557,7 +490,6 @@ piece.o: piece.cpp.o
 
 # target to build an object file
 piece.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/piece.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/piece.cpp.o
 .PHONY : piece.cpp.o
 
@@ -567,7 +499,6 @@ piece.i: piece.cpp.i
 
 # target to preprocess a source file
 piece.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/piece.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/piece.cpp.i
 .PHONY : piece.cpp.i
 
@@ -577,7 +508,6 @@ piece.s: piece.cpp.s
 
 # target to generate assembly for a file
 piece.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/piece.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/piece.cpp.s
 .PHONY : piece.cpp.s
 
@@ -587,7 +517,6 @@ player.o: player.cpp.o
 
 # target to build an object file
 player.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/player.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/player.cpp.o
 .PHONY : player.cpp.o
 
@@ -597,7 +526,6 @@ player.i: player.cpp.i
 
 # target to preprocess a source file
 player.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/player.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/player.cpp.i
 .PHONY : player.cpp.i
 
@@ -607,7 +535,6 @@ player.s: player.cpp.s
 
 # target to generate assembly for a file
 player.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/player.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/player.cpp.s
 .PHONY : player.cpp.s
 
@@ -654,14 +581,10 @@ help:
 	@echo "... gmock_main"
 	@echo "... gtest"
 	@echo "... gtest_main"
-	@echo "... main"
 	@echo "... test"
 	@echo "... board.o"
 	@echo "... board.i"
 	@echo "... board.s"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
 	@echo "... moveBishop.o"
 	@echo "... moveBishop.i"
 	@echo "... moveBishop.s"
