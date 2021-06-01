@@ -63,7 +63,12 @@ The two design patterns we decided on are first:
  ## Screenshots
  > Screenshots of the input/output after running your application
  **Initialized Board w/ pieces**
-  ![Initialized Board w/ pieces](./images/screenshot1.png)
+  ![Initialized Board w/ pieces:](./images/screenshot1.png)
+  
+  ![Gameplay:](./images/screenshot2.png)
+  
+  ![](./images/screenshot3.png)
+  
  ## Installation/Usage
  > Instructions on installing and running your application
  ## Testing
