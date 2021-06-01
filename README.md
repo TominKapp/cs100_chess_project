@@ -66,6 +66,7 @@ The two design patterns we decided on are first:
   ![Initialized Board w/ pieces:](./images/screenshot1.png)
   
   **Gameplay:**
+  
   ![Gameplay:](./images/screenshot2.png)
   
   ![](./images/screenshot3.png)
@@ -97,3 +98,10 @@ To run this we use:
   * cmake3 .
   * make
   * ./test
+
+ ## MonkeyChess Open Beta release to the public
+ ![monkeyChess1](./images/monkeyChess1.png)
+ ![monkeyChess2](./images/monkeyChess2.png)
+ ![monkeyChess3](./images/monkeyChess3.jpg)
+ ![monkeyChess4](./images/monkeyChess4.png)
+ 
