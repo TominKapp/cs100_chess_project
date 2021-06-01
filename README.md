@@ -76,15 +76,15 @@ The two design patterns we decided on are first:
     To run this we use: "valgrind --gen-suppressions=all --suppressions=./valgrind_suppressions.txt --leak-check=full --show-leak-kinds=all ./main"
 
 Instruction to create Monkey Chess (using a linux based machine)
-    * Install all neccessary programs/libraries
-        * sudo apt-get install valgrind
-        * sudo apt-get install g++
-        * sudo apt-get install libsdl2-dev
-        * sudo apt-get install libsdl2-image-dev
-    * cmake3 .
-    * make
-    * if you want GUI run "g++ -w *.cpp GUI/src/* -lSDL2 -lSDL2_image -o main"
-    * run main
+Markup : 1. Install all neccessary programs/libraries
+        1. sudo apt-get install valgrind
+        2. sudo apt-get install g++
+        3. sudo apt-get install libsdl2-dev
+        4. sudo apt-get install libsdl2-image-dev
+    2. cmake3 .
+    3. make
+    4. if you want GUI run "g++ -w *.cpp GUI/src/* -lSDL2 -lSDL2_image -o main"
+    5. run main
 
  ## Testing
  > How was your project tested/validated? If you used CI, you should have a "build passing" badge in this README.
