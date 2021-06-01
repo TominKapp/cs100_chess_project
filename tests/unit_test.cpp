@@ -7,6 +7,9 @@
 #include "queen_test.hpp"
 #include "king_test.hpp"
 #include "bishop_test.hpp"
+#include "piece_test.hpp"
+#include "player_test.hpp"
+#include "board_test.hpp"
 
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
