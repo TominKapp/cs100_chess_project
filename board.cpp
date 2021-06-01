@@ -155,7 +155,7 @@ bool Board::gameOver() const {
     return false;
 }
 
-void Board::runGame() {
+void Board::runTerminalGame() {
     int team = 0;
 
     while (!gameOver()) {
