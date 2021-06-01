@@ -5,7 +5,7 @@
 #include <SDL2/SDL.h>
 #include <iostream>
 
-#include "../../player.hpp"
+#include "../../backend/header/player.hpp"
 #include "game_object.hpp"
 
 class GUI_Board {
@@ -34,7 +34,6 @@ class GUI_Board {
     
     public:
         GUI_Board();
-        //~Board();
         ~GUI_Board();
         
         void updateBoardState();
@@ -44,7 +43,7 @@ class GUI_Board {
         void runGame();
 
         //New Functions
-        bool gameOver(int team);
+        bool gameOver();
         bool makeMove(int team, int sX, int sY, int eX, int eY);
 
         //From Chess Game
@@ -59,71 +58,7 @@ class GUI_Board {
 
 
 
-        void drawDebugBoard() const {
-            char output;
-            
-            std::cout << "-------- " << std::endl;
-            for (int i = 63; i >= 0; i--) {
-                //output = '#';
-                
-                if (((i / 8) + (i % 8)) % 2 == 1) {
-                    output = 176;
-                }
-                else {
-                    output = 178;
-                }
-                
-                switch(white->getPieceAt(pow(2,i))) {
-                    case 0:
-                        output = 'p';
-                        break;
-                    case 1:
-                        output = 'r';
-                        break;
-                    case 2:
-                        output = 'n';
-                        break;
-                    case 3:
-                        output = 'b';
-                        break;
-                    case 4:
-                        output = 'q';
-                        break;
-                    case 5:
-                        output = 'k';
-                        break;
-                }
-                
-                switch(black->getPieceAt(pow(2,i))) {
-                    case 0:
-                        output = 'P';
-                        break;
-                    case 1:
-                        output = 'R';
-                        break;
-                    case 2:
-                        output = 'N';
-                        break;
-                    case 3:
-                        output = 'B';
-                        break;
-                    case 4:
-                        output = 'Q';
-                        break;
-                    case 5:
-                        output = 'K';
-                        break;
-                }
-                
-                std::cout << output;
-                
-                if (i % 8 == 0) {
-                    std::cout << "|" << (i / 8) << std::endl;
-                }
-            }
-            std::cout << "-------- " << std::endl;
-            std::cout << "76543210 " << std::endl;
-        }
+        void drawDebugBoard() const;
     private:
         bool collision(int, int, GameObject*);
 

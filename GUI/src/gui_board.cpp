@@ -1,5 +1,5 @@
 #include "../header/gui_board.hpp"
-#include "../../player.hpp"
+//#include "../../backend/header/player.hpp"
 
 #include <cstdint>
 #include <iostream>
@@ -11,21 +11,27 @@ GUI_Board::GUI_Board() {
 
     this->updateBoardState();
 }
-
 GUI_Board::~GUI_Board() {
     delete white;
     delete black;
 
-    
     for (int i = 0; i < 64; i++) {
-        if (white_pieces[i] != nullptr)
+        if (white_pieces[i] != nullptr) {
+            white_pieces[i]->clean();
             delete white_pieces[i];
-        if (black_pieces[i] != nullptr)
+        } 
+        if (black_pieces[i] != nullptr) {
+            black_pieces[i]->clean();
             delete black_pieces[i];
+        }
     }
+    if (pieceMoving) delete pieceMoving;
 
+    clean();
+    //if (chessBoard) delete chessBoard;
+    //if (window) delete window;
+    //if (renderer) delete renderer;
 }
-
 uint64_t GUI_Board::cartesianToBitmask(int column, int row) const {
     if ((column < 0) | (column > 7) | (row < 0) | (row > 7)) { //return 0 if out of bounds
         return 0;
@@ -33,21 +39,17 @@ uint64_t GUI_Board::cartesianToBitmask(int column, int row) const {
             
     return pow(2, ((row * 8) + column));
 }
-
 void GUI_Board::updateBoardState() {
     this->boardstate = white->getBoardState() | black->getBoardState();
 }
-
 uint64_t GUI_Board::getBoardState() const {
     return this->boardstate;
 }
-
 void GUI_Board::runGame() {
-    /*
-    init(SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,500,500);
+    init(SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,800,800);
 
 
-    while (!gameOver(team) || isRunning) {
+    while (!gameOver() && isRunning) {
         
         handleEvents();
         update();
@@ -55,7 +57,7 @@ void GUI_Board::runGame() {
         
         updateBoardState();
     }
-    */
+    
 }
 
 //From Chess Game
@@ -68,47 +70,53 @@ void GUI_Board::handleEvents() {
         case SDL_QUIT:
             isRunning = false;
             break;
-        
         case SDL_MOUSEBUTTONDOWN:
-            drawDebugBoard();
             if (pieceMoved) {
                 mX /= PIECE_W;
                 mY = mY/PIECE_H;
                 mouseX /= PIECE_W;
                 mouseY = mouseY/PIECE_H;
 
-                
                 if (makeMove(team, mouseX, 7-mouseY, mX, 7-mY)) {
-                    
+                    int index = 8*(mY) + mX;
                     pieceMoving->setX(mX*PIECE_W);
                     pieceMoving->setY((mY)*PIECE_H);
                     switch(team) {
                         case 0:
                             white->testCaptures(black);
                             //if capture update board w/ capture
-                            //if (black_pieces[8*(mX) + mY])
-                            black_pieces[8*(mX) + mY] = pieceMoving;
+                            
+                            if (white_pieces[index]) {
+                                delete white_pieces[index];
+                                white_pieces[index] = nullptr;
+                            }
+                            
+                            black_pieces[index] = pieceMoving;
                             pieceMoving = nullptr;
                             team = 1;
                             std::cout << "white's move" << std::endl;
                             break;
                         case 1:
                             black->testCaptures(white);
-                            white_pieces[8*(mX) + mY] = pieceMoving;
+                            
+                            if (black_pieces[index]) {
+                                delete black_pieces[index];
+                                black_pieces[index] = nullptr;
+                            }
+                            white_pieces[index] = pieceMoving;
 
                             pieceMoving = nullptr;
                             team = 0;
                             std::cout << "black's move" << std::endl;
                             break;
                     }
-                    drawDebugBoard();
                 }
                 else {
-                    
+                    int index = 8*(mouseY) + mouseX;
                     pieceMoving->setX(mouseX*PIECE_W);
                     pieceMoving->setY(mouseY*PIECE_H);
-                    if (team == 1) white_pieces[8*(mouseX) + mouseY] = pieceMoving;
-                    else black_pieces[8*(mouseX) + mouseY] = pieceMoving;
+                    if (team == 1) white_pieces[index] = pieceMoving;
+                    else black_pieces[index] = pieceMoving;
 
                     pieceMoving = nullptr;
 
@@ -131,9 +139,6 @@ void GUI_Board::handleEvents() {
                 }
             }
             break;
-
-        case SDL_MOUSEBUTTONUP:
-            break;
             
         case SDL_MOUSEMOTION:
             if (pieceMoved) {
@@ -154,7 +159,7 @@ void GUI_Board::handleEvents() {
 void GUI_Board::init(int x, int y, int w, int h) {
     if (SDL_Init(SDL_INIT_EVERYTHING) == 0) {
         std::cout << "Initializing..." << std::endl;
-        window = SDL_CreateWindow("Chess Game", x,y,w,h,0);
+        window = SDL_CreateWindow("Monkey Chess", x,y,w,h,0);
         if (window) std::cout << "Window in..." << std::endl;
         renderer = SDL_CreateRenderer(window, -1, 0);
         if (renderer) {
@@ -163,7 +168,7 @@ void GUI_Board::init(int x, int y, int w, int h) {
 
         }
         isRunning = true;
-        team = 0;
+        team = 1;
         
         chessBoard = TextureManager::load_Texture("GUI/img/chessboard2.png", renderer);
         windowRect.x = 0;
@@ -179,7 +184,6 @@ void GUI_Board::init(int x, int y, int w, int h) {
             for (int j = 0; j < 8; j++) {
                 int currPiece = white->getPieceAt(cartesianToBitmask(j,7-i));
                 if (currPiece != -1) {
-                    std::cout << i << "," << j << ": " << currPiece << std::endl;
                     const char* currPieceImg = "GUI/img/pawn2.png";
                     switch (currPiece) {
                         case 0: 
@@ -203,22 +207,17 @@ void GUI_Board::init(int x, int y, int w, int h) {
                         default:
                             break;
                     }
-                    GameObject* o = new GameObject(currPieceImg, renderer, 100, 100);
-                    if (o) {
-                        o->setX(PIECE_W*j);
-                        o->setY(PIECE_H*i);
-                        o->update();
-                        white_pieces[8*(i) + j] = o;
-                        std::cout << "Created object with params: " << std::endl;
-                        std::cout << "w(" <<  o->getRect().w << "), h(" << o->getRect().h << "), x(" << o->getRect().x << "), y(" << o->getRect().y << ")" << std::endl;
+                    white_pieces[8*(i) + j] = new GameObject(currPieceImg, renderer, PIECE_W, PIECE_H);
+                    if (white_pieces[8*(i) + j]) {
+                        white_pieces[8*(i) + j]->setX(PIECE_W*j);
+                        white_pieces[8*(i) + j]->setY(PIECE_H*i);
+                        white_pieces[8*(i) + j]->update();
                     }
-                    else white_pieces[8*(i) + j] = nullptr;
                 }
                 else white_pieces[8*(i) + j] = nullptr;
 
                 currPiece = black->getPieceAt(cartesianToBitmask(j,7-i));
                 if (currPiece != -1) {
-                    std::cout << i << "," << j << ": " << currPiece << std::endl;
                     const char* currPieceImg = "GUI/img/pawn2.png";
                     switch (currPiece) {
                         case 0: 
@@ -242,21 +241,18 @@ void GUI_Board::init(int x, int y, int w, int h) {
                         default:
                             break;
                     }
-                    GameObject* o = new GameObject(currPieceImg, renderer, PIECE_W, PIECE_H);
-                    if (o) {
-                        o->setX(PIECE_W*j);
-                        o->setY(PIECE_H*i);
-                        o->update();
-                        black_pieces[8*(i) + j] = o;
-                        std::cout << "Created object with params: " << std::endl;
-                        std::cout << "w(" <<  o->getRect().w << "), h(" << o->getRect().h << "), x(" << o->getRect().x << "), y(" << o->getRect().y << ")" << std::endl << std::endl;
+                    black_pieces[8*(i) + j] = new GameObject(currPieceImg, renderer, PIECE_W, PIECE_H);
+                    if (black_pieces[8*(i) + j]) {
+                        black_pieces[8*(i) + j]->setX(PIECE_W*j);
+                        black_pieces[8*(i) + j]->setY(PIECE_H*i);
+                        black_pieces[8*(i) + j]->update();
+                        
                     }
                     else black_pieces[8*(i) + j] = nullptr;
                 }
                 else black_pieces[8*(i) + j] = nullptr;
             }
         }
-        
     }
     else {
         std::cout << "Bad things happened" << std::endl;
@@ -287,8 +283,9 @@ void GUI_Board::render() {
     SDL_RenderPresent(renderer);
 }
 void GUI_Board::clean() {
-    SDL_DestroyWindow(window);
+    SDL_DestroyTexture(chessBoard);
     SDL_DestroyRenderer(renderer);
+    SDL_DestroyWindow(window);
     SDL_Quit();
 }
 //Helpers
@@ -304,12 +301,12 @@ bool GUI_Board::collision(int x, int y, GameObject* o) {
 }
 
 //Additional Functions
-bool GUI_Board::gameOver(int teamTmp) {
+bool GUI_Board::gameOver() {
     //Checks if checkmate
-
+    if (white->kingIsCaptured() || black->kingIsCaptured()) return true;
     //Checks if no more moves
-    if (white->getAllValidMoves(boardstate) == 0 && team == 0) return true;
-    if (black->getAllValidMoves(boardstate) == 0 && team == 1) return true;
+    if (white->getAllValidMoves(boardstate) == 0) return true;
+    if (black->getAllValidMoves(boardstate) == 0) return true;
     return false;
 }
 bool GUI_Board::makeMove(int teamTmp, int sX, int sY, int eX, int eY) {
@@ -326,4 +323,68 @@ bool GUI_Board::makeMove(int teamTmp, int sX, int sY, int eX, int eY) {
         return white->makeMove(scoord, ecoord, this->boardstate);
     }
 }
-
+void GUI_Board::drawDebugBoard() const {
+    char output;
+    
+    std::cout << "-------- " << std::endl;
+    for (int i = 63; i >= 0; i--) {
+        //output = '#';
+        
+        if (((i / 8) + (i % 8)) % 2 == 1) {
+            output = 176;
+        }
+        else {
+            output = 178;
+        }
+        
+        switch(white->getPieceAt(pow(2,i))) {
+            case 0:
+                output = 'p';
+                break;
+            case 1:
+                output = 'r';
+                break;
+            case 2:
+                output = 'n';
+                break;
+            case 3:
+                output = 'b';
+                break;
+            case 4:
+                output = 'q';
+                break;
+            case 5:
+                output = 'k';
+                break;
+        }
+        
+        switch(black->getPieceAt(pow(2,i))) {
+            case 0:
+                output = 'P';
+                break;
+            case 1:
+                output = 'R';
+                break;
+            case 2:
+                output = 'N';
+                break;
+            case 3:
+                output = 'B';
+                break;
+            case 4:
+                output = 'Q';
+                break;
+            case 5:
+                output = 'K';
+                break;
+        }
+        
+        std::cout << output;
+        
+        if (i % 8 == 0) {
+            std::cout << "|" << (i / 8) << std::endl;
+        }
+    }
+    std::cout << "-------- " << std::endl;
+    std::cout << "76543210 " << std::endl;
+}
