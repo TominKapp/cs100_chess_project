@@ -1,13 +1,10 @@
-CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
+CMAKE_MINIMUM_REQUIRED(VERSION 3.7)
 
 ADD_SUBDIRECTORY(googletest)
 
 SET(CMAKE_CXX_STANDARD 11)
 
 project(MonkeyChess)
-
-find_package(SDL2 REQUIRED)
-include_directories(${SDL2_INCLUDE_DIRS})
 
 ADD_EXECUTABLE(test
     tests/unit_test.cpp
@@ -25,13 +22,10 @@ ADD_EXECUTABLE(test
     player.cpp
 )
 
-ADD_EXECUTABLE(main
-    GUI/src/game_object.cpp
-    GUI/src/gui_board.cpp
-    GUI/src/texture_manager.cpp
-
+#[[ADD_EXECUTABLE(main
+    
     board.cpp
-    main.cpp
+    cmd_main.cpp
     moveBishop.cpp
     moveBlackPawn.cpp
     moveFactory.cpp
@@ -43,8 +37,8 @@ ADD_EXECUTABLE(main
     piece.cpp
     player.cpp
 )
+]]
 
 ADD_COMPILE_OPTIONS(-std=c++0x)
 TARGET_LINK_LIBRARIES(test gtest)
-TARGET_LINK_LIBRARIES(main ${SDL2_LIBRARIES})
 TARGET_COMPILE_DEFINITIONS(test PRIVATE gtest_disable_pthreads=ON)
