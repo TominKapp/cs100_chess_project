@@ -1,29 +1,34 @@
-#ifndef __GAME_OBJECT_HPP__
-#define __GAME_OBJECT_HPP__
+#include "../header/game_object.hpp"
 
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
-//#include "header/piece.hpp"
-#include "texture_manager.hpp"
+GameObject::~GameObject() {
+    
+}
 
-class GameObject {
-    protected:
-        SDL_Texture* texture = NULL;
-        SDL_Renderer* renderer = NULL;
-        SDL_Rect srcRect, destRect;
+GameObject::GameObject(const char* imgFile, SDL_Renderer* r, int w, int h) {
 
-        int x, y;
-    public:
-        GameObject(const char*, SDL_Renderer*, int, int);
-        ~GameObject();
+    this->renderer = r;
+    this->texture = TextureManager::load_Texture(imgFile, r);
 
-        void update();
-        void render();
+    //this->srcRect = NULL;
 
-        void setX(int x) {this->x = x;}
-        void setY(int y) {this->y = y;}
-        SDL_Rect getRect() { return destRect; }
+    this->x = 0;
+    this->y = 0;
 
-};
+    this->destRect.x = this->x;
+    this->destRect.y = this->y;
+    this->destRect.w = w;
+    this->destRect.h = h;
+}
 
-#endif  //__GAME_OBJECT_HPP__
+void GameObject::render() {
+    SDL_RenderCopy(renderer, texture, NULL, &destRect);
+}
+
+void GameObject::update() {
+    this->destRect.x = this->x;
+    this->destRect.y = this->y;
+}
+
+void GameObject::clean() {
+    SDL_DestroyTexture(texture);
+}
