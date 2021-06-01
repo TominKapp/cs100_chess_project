@@ -1,5 +1,8 @@
 *.exe
 *.out
+test
+main
+
 bin 
 lib 
 CMakeCache.txt
