@@ -12,6 +12,7 @@ GUI_Board::GUI_Board() {
     this->updateBoardState();
 }
 
+<<<<<<< HEAD
 GUI_Board::~GUI_Board() {
     delete white;
     delete black;
@@ -26,6 +27,8 @@ GUI_Board::~GUI_Board() {
 
 }
 
+=======
+>>>>>>> bfb73988d621a019083a347f8f6252a81c69df83
 uint64_t GUI_Board::cartesianToBitmask(int column, int row) const {
     if ((column < 0) | (column > 7) | (row < 0) | (row > 7)) { //return 0 if out of bounds
         return 0;
@@ -250,6 +253,10 @@ void GUI_Board::init(int x, int y, int w, int h) {
                         black_pieces[8*(i) + j] = o;
                         std::cout << "Created object with params: " << std::endl;
                         std::cout << "w(" <<  o->getRect().w << "), h(" << o->getRect().h << "), x(" << o->getRect().x << "), y(" << o->getRect().y << ")" << std::endl << std::endl;
+<<<<<<< HEAD
+=======
+                        
+>>>>>>> bfb73988d621a019083a347f8f6252a81c69df83
                     }
                     else black_pieces[8*(i) + j] = nullptr;
                 }

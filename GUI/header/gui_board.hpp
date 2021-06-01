@@ -35,7 +35,10 @@ class GUI_Board {
     public:
         GUI_Board();
         //~Board();
+<<<<<<< HEAD
         ~GUI_Board();
+=======
+>>>>>>> bfb73988d621a019083a347f8f6252a81c69df83
         
         void updateBoardState();
         uint64_t getBoardState() const;

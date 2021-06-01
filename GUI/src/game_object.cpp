@@ -1,11 +1,14 @@
 #include "../header/game_object.hpp"
 
+<<<<<<< HEAD
 
 GameObject::~GameObject() {
     
 }
 
 
+=======
+>>>>>>> bfb73988d621a019083a347f8f6252a81c69df83
 GameObject::GameObject(const char* imgFile, SDL_Renderer* r, int w, int h) {
 
     this->renderer = r;
