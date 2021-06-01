@@ -71,7 +71,21 @@ The two design patterns we decided on are first:
   ![](./images/screenshot3.png)
   
  ## Installation/Usage
- > Instructions on installing and running your application
+ GUI Valgrind
+  Running Valgrind on the GUI was no easy task. At first, we were overwhelmed by the number of errors we got (it was over 10000 lines of code with over 2 million bytes lost at some point). However, we knew something must have been off because our board class ran with no errors. So we searched online and came by a reddit post describing the problems a user was having running Valgrind on their system. Their solution was to add a suppression to valgrind... one which we copied and edited for our own purposes. This is the purpose of the valgrind_suppressions.txt file 
+    To run this we use: "valgrind --gen-suppressions=all --suppressions=./valgrind_suppressions.txt --leak-check=full --show-leak-kinds=all ./main"
+
+Instruction to create Monkey Chess (using a linux based machine)
+    1. Install all neccessary programs/libraries
+        a) sudo apt-get install valgrind
+        b) sudo apt-get install g++
+        c) sudo apt-get install libsdl2-dev
+        d)sudo apt-get install libsdl2-image-dev
+    2. cmake3 .
+    3. make
+    4. if you want GUI run "g++ -w *.cpp GUI/src/* -lSDL2 -lSDL2_image -o main"
+    5. run main
+
  ## Testing
  > How was your project tested/validated? If you used CI, you should have a "build passing" badge in this README.
  
