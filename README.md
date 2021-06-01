@@ -65,6 +65,7 @@ The two design patterns we decided on are first:
  **Initialized Board w/ pieces**
   ![Initialized Board w/ pieces:](./images/screenshot1.png)
   
+  **Gameplay:**
   ![Gameplay:](./images/screenshot2.png)
   
   ![](./images/screenshot3.png)
